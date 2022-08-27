@@ -1,0 +1,71 @@
+v2.0.6:
+    date:2020-01-14
+    changes:
+      -  初始化版本
+      -  ESMAScript6+规范引入（import / export，编译时加载）和script标签全局引入方式
+v2.0.7:
+    date:2020-01-20
+    changes:
+      -  添加常用的内置着色器（通过创建image3D的时候新增配置项实现）
+v2.1.0
+    date:2021-01-10
+    chagnes:
+      -  升级底层依赖
+v3.0.0
+    date:2021-03-15
+    chagnes:
+      -  核心代码提供独立暴露接口
+v3.1.0
+    date:2021-06-18
+    chagnes:
+      -  添加相机的压缩空间选项（默认只显示 -1 ~ 1 的范围）
+v3.2.1
+    date:2021-10-20
+    chagnes:
+      -  压缩空间矩阵新增xyz分别设置接口
+v3.2.2
+    date:2021-10-20
+    chagnes:
+      -  创建对象的时候新增 ```gl.viewport``` 主动设置视域大小和画布大小匹配
+        （解决画布大小改变的时候无法正确对齐问题）
+v3.2.3
+    date:2021-10-21
+    chagnes:
+      -  对不支持webgl或者使用了错误的标签添加友好提示
+v3.2.4
+    date:2021-10-22
+    chagnes:
+      -  核心包对外暴露原始的webgl对象（通过属性 ```core._gl_``` 提供）
+v3.2.5
+    date:2022-01-05
+    chagnes:
+      -  修复一些已知问题
+v3.3.0
+    date:2022-01-08
+    chagnes:
+      -  新增对画布宽高不一样的支持
+v3.3.1
+    date:2022-01-09
+    chagnes:
+      -  修复对z值等于1无法绘制问题
+      -  针对相机新增z值是否校对选项 ``` options.proof ```
+v3.4.0
+    date:2022-04-19
+    chagnes:
+      -  新增types以新增对ts环境更好的支持
+v3.4.1
+    date:2022-05-03
+    chagnes:
+      -  修复相机size无缺省值问题
+v3.4.2
+    date:2022-05-28
+    chagnes:
+      -  校对types类型
+v3.5.0
+    date:2022-07-22
+    chagnes:
+      -  新增更新着色器的方法 ``` image3d.setShader(vertexShader,fragmentShader) ```
+v3.6.1
+    date:2022-07-23
+    chagnes:
+      -  新增清空画布的方法 ``` image3d.clear(r, g, b, a) ```

@@ -1,0 +1,17 @@
+.github {
+    position: fixed;
+    transform: rotate(45deg);
+    bottom: 79px;
+    line-height: 1.6em;
+    left: -65px;
+    background-color: #b25932;
+    outline: 4px solid #b25932;
+    transform-origin: 150px 23px;
+    border: 2px dashed #faf6f5;
+    width: 300px;
+    text-align: center;
+    color: #f7f3f2;
+    z-index: 2;
+    font-family: sans-serif;
+    text-decoration: none;
+}

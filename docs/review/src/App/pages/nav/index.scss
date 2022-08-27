@@ -1,0 +1,79 @@
+.nav-view {
+    &>div {
+        height: 100vh;
+        vertical-align: top;
+        display: inline-block;
+
+        &.left {
+            width: 200px;
+            border-right: 1px solid #c2baba;
+
+            &>a {
+                background-image: url('./images/goback.png');
+                height: 100px;
+                background-repeat: no-repeat;
+                background-size: auto 60%;
+                background-position: center;
+                width: 100%;
+                display: inline-block;
+                font-size: 0;
+
+                &:hover {
+                    background-size: auto 70%;
+                }
+            }
+
+            &>h2 {
+                background-image: url('./images/drawing-room@boy.png');
+                padding-bottom: 300px;
+                background-size: auto calc(100% - 50px);
+                background-position: center bottom;
+                text-align: center;
+                background-repeat: no-repeat;
+                color: #b25932;
+                font-family: serif;
+            }
+        }
+
+        &.right {
+            width: calc(100vw - 200px);
+
+            &>a {
+
+                display: inline-block;
+                width: 160px;
+                height: 160px;
+                border: 1px solid #d6cece;
+                background-size: 100% auto;
+                background-repeat: no-repeat;
+                background-position: center;
+                background-color: #f5f1f1;
+
+                &.robot-3d {
+                    background-image: url('./images/robot-3d.png');
+                }
+
+                &.sphere-image {
+                    background-image: url('./images/sphere-image.png');
+                }
+
+                &.two-function {
+                    background-image: url('./images/two-function.png');
+                }
+
+                &.custom_geometry {
+                    background-image: url('./images/custom_geometry.png');
+                }
+
+                &.k_simple {
+                    background-image: url('./images/k_simple.png');
+                }
+
+                &.H2O-laboratory {
+                    background-image: url('./images/H2O-laboratory.png');
+                }
+
+            }
+        }
+    }
+}

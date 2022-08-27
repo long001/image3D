@@ -1,0 +1,299 @@
+<template class='opengl-es-view'>
+    <a href="https://github.com/hai2007/image3D" class="github" target="_blank">Fork me on Github</a>
+    <div class="menu">
+        <header>
+            《 OpenGL ES 着色器语言
+            <span>(GLSL ES)</span>
+            》
+        </header>
+        <ul>
+            <li :active="flag[0]=='lang'?'yes':'no'">
+                <span @click="doNav('lang')">语言定义</span>
+                <ul>
+                    <li>
+                        <span @click="doNav('lang-key')">关键字</span>
+                    </li>
+                    <li>
+                        <span @click="doNav('lang-holdkey')">保留字</span>
+                    </li>
+                    <li :active="flag[1]=='var'?'yes':'no'">
+                        <span @click="doNav('lang-var')">变量</span>
+                        <ul>
+                            <li>
+                                <span @click="doNav('lang-var-define')">命名规范</span>
+                            </li>
+                        </ul>
+                    </li>
+                    <li :active="flag[1]=='type'?'yes':'no'">
+                        <span @click="doNav('lang-type')">数据类型</span>
+                        <ul>
+                            <li>
+                                <span @click="doNav('lang-type-lang')">基本类型</span>
+                            </li>
+                            <li>
+                                <span @click="doNav('lang-type-matrix')">失量和矩阵</span>
+                            </li>
+                        </ul>
+                    </li>
+                    <li :active="flag[1]=='limkey'?'yes':'no'">
+                        <span @click="doNav('lang-limkey')">限定字</span>
+                        <ul>
+                            <li>
+                                <span @click="doNav('lang-limkey-attribute')">attribute</span>
+                            </li>
+                            <li>
+                                <span @click="doNav('lang-limkey-uniform')">uniform</span>
+                            </li>
+                            <li>
+                                <span @click="doNav('lang-limkey-varying')">varying</span>
+                            </li>
+                            <li>
+                                <span @click="doNav('lang-limkey-precision')">precision</span>
+                            </li>
+                        </ul>
+                    </li>
+                    <li>
+                        <span @click="doNav('lang-function')">内置函数</span>
+                    </li>
+                </ul>
+            </li>
+        </ul>
+    </div>
+    <div id='root-view' class='view'>
+        <div class='doc-view' id="fixed-top">
+            <header>
+                《 OpenGL ES 着色器语言
+                <span>(GLSL ES)</span>
+                》
+            </header>
+            <h2 id="fixed-lang">
+                语言定义
+            </h2>
+            <h3 id="fixed-lang-key">
+                关键字
+            </h3>
+            <img src="./images/opengl-es/key.png">
+            <h3 id="fixed-lang-holdkey">
+                保留字
+            </h3>
+            <img src="./images/opengl-es/hold-key.png">
+            <h3 id="fixed-lang-var">
+                变量
+            </h3>
+            <h4 id="fixed-lang-var-define">
+                命名规范
+            </h4>
+            <ol>
+                <li>
+                    只包含a-z，A-Z，0-9和下划线“_”。
+                </li>
+                <li>
+                    变量名的首字母不能是数字。
+                </li>
+                <li>
+                    不能是关键字或者保留字。
+                </li>
+                <li>
+                    对于gl_、webgl_或_webgl_开头的，这些前缀已经被OpenGL ES保留，也不能作为变量。
+                </li>
+            </ol>
+            <h3 id="fixed-lang-type">
+                数据类型
+            </h3>
+            <h4 id="fixed-lang-type-lang">
+                基本类型
+            </h4>
+            <p>
+                支持的基本类型如下：
+            </p>
+            <img src="./images/opengl-es/type.png">
+            <p>
+                因为GLSL ES是强类型语言，赋值语句的左右两边类型需要保持一致，有如下的类型转换方法：
+            </p>
+            <img src="./images/opengl-es/type-trans.png">
+            <h4 id="fixed-lang-type-matrix">
+                失量和矩阵
+            </h4>
+            <img src="./images/opengl-es/type-matrix.png">
+            <p class="warn">
+                温馨提示：矩阵采用列优先存储。
+            </p>
+            <h3 id="fixed-lang-limkey">
+                限定字
+            </h3>
+            <h4 id="fixed-lang-limkey-attribute">
+                attribute
+            </h4>
+            <p>
+                只能出现在
+                <span class="warn">顶点着色器</span>
+                中，需要声明为全局变量，用来表示逐顶点信息。
+            </p>
+            <h4 id="fixed-lang-limkey-uniform">
+                uniform
+            </h4>
+            <p>
+                可以出现在
+                <span class="warn">顶点着色器</span>
+                和
+                <span class="warn">片元着色器</span>
+                ，必须为全局变量，可以是数组和结构体外的任意类型，如果两个色器声明了同命的uniform变量，那么它就会被两个着色器共享。
+            </p>
+            <h4 id="fixed-lang-limkey-varying">
+                varying
+            </h4>
+            <p>
+                必须为全局变量，它的任务是从
+                <span class="warn"> 顶点着色器</span>
+                传递数据给
+                <span class="warn">片元着色器</span>
+                ，我们必须在两个着色器中声明同命、同类型的varying变量。
+            </p>
+            <h4 id="fixed-lang-limkey-precision">
+                precision
+            </h4>
+            <p>
+                也就是精度限定字，支持的类型如下：
+            </p>
+            <img src="./images/opengl-es/precision.png">
+            <h3 id="fixed-lang-function">
+                内置函数
+            </h3>
+            <img src="./images/opengl-es/function.png">
+        </div>
+    </div>
+</template>
+
+<script>
+    import fixedScroll from '../Service/fixedScroll.js';
+    export default {
+        data() {
+            return {
+                flag: []
+            };
+        },
+        mounted() {
+            document.getElementsByTagName('title')[0].innerText = "《 OpenGL ES 着色器语言 (GLSL ES)  》 WebGL渲染三维图形的关键，专门用来编写着色器的编程语言";
+            let fixedName = this.urlFormat(window.location.href).params.fixed || "lang";
+            setTimeout(() => {
+                fixedScroll(fixedName, 5);
+            }, 100);
+            this.changeFlag(fixedName);
+        },
+        methods: {
+            doNav(fixedName) {
+                this.doScroll("opengl-es", fixedName, 5);
+                this.changeFlag(fixedName);
+            },
+            changeFlag(fixedName) {
+                this.flag = fixedName.split('-');
+            }
+        }
+    };
+</script>
+<style>
+    .opengl-es-view {
+        background-color: rgb(255, 255, 255);
+        font-size: 12px;
+        font-family: cursive;
+        white-space: nowrap;
+
+        .github {
+            position: fixed;
+            transform: rotate(45deg);
+            top: 60px;
+            line-height: 1.6em;
+            right: -60px;
+            background-color: #9e9695;
+            outline: 4px solid #9e9695;
+            transform-origin: 150px 23px;
+            border: 2px dashed #faf6f5;
+            width: 300px;
+            text-align: center;
+            color: #f7f3f2;
+            z-index: 2;
+            font-family: sans-serif;
+            text-decoration: none;
+        }
+
+        &>div {
+            display: inline-block;
+            vertical-align: top;
+            height: 100vh;
+            white-space: normal;
+            overflow: auto;
+
+            &.menu {
+                width: 260px;
+                border-right: 1px solid rgb(188, 186, 186);
+
+                &>header {
+                    text-align: center;
+                    padding: 20px 0;
+                    font-weight: 800;
+                    font-size: 14px;
+
+                    &>span {
+                        font-size: 12px;
+                        color: #9e9695;
+                    }
+                }
+
+                &>ul {
+                    line-height: 1.6em;
+                    margin-left: 10px;
+
+                    li {
+                        margin-left: 15px;
+
+                        &[active='yes'] {
+                            &>span {
+                                background-image: url('./images/open.png');
+                            }
+                        }
+
+                        &[active='no'] {
+                            &>span {
+                                background-image: url('./images/close.png');
+                            }
+
+                            &>ul {
+                                display: none;
+                            }
+                        }
+
+                        &>span {
+                            cursor: pointer;
+                            background-repeat: no-repeat;
+                            background-position: left center;
+                            background-size: 14px auto;
+                            padding-left: 16px;
+                            display: inline-block;
+
+                            &:hover {
+                                text-decoration: underline;
+                            }
+                        }
+                    }
+                }
+            }
+
+            &.view {
+                width: calc(100vw - 260px);
+
+                &>.doc-view {
+                    &>header {
+                        &>span {
+                            font-size: 16px;
+                            color: #9e9695;
+                        }
+                    }
+
+                    &>h4 {
+                        font-size: 12px;
+                    }
+                }
+            }
+        }
+    }
+</style>
